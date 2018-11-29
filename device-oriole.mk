@@ -86,12 +86,14 @@ PRODUCT_COPY_FILES += \
 
 
 # Bluetooth Hal Extension test tools
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES_DEBUG += \
     sar_test \
     hci_inject
+endif
 
 # userdebug specific
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 # Bluetooth LE Audio Hardware offload
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.bluetooth.leaudio_offload.supported=true \
@@ -175,7 +177,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_idle_timer_ms=1500
 PRODUCT_PROPERTY_OVERRIDES += ro.odm.build.media_performance_class=31
 
 # userdebug specific
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
     PRODUCT_COPY_FILES += \
         device/google/gs101/init.hardware.wlc.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.wlc.rc
 endif
@@ -265,7 +267,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.opus.enabled=true
 
 # Location
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
         PRODUCT_COPY_FILES += \
 		device/google/raviole/location/gps.xml.oriole:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
 else

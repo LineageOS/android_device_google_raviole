@@ -116,7 +116,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
 	frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
 	device/google/raviole/nfc/libnfc-hal-st-debug.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st.conf \
 	device/google/raviole/nfc/libnfc-nci-raven-debug.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
@@ -180,7 +180,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 
 # userdebug specific
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
     PRODUCT_COPY_FILES += \
         device/google/gs101/init.hardware.wlc.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).wlc.rc
 endif

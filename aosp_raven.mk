@@ -26,4 +26,8 @@ PRODUCT_BRAND := Android
 PRODUCT_BRAND_FOR_ATTESTATION := google
 PRODUCT_MANUFACTURER := Google
 
-PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+# Keep the VNDK APEX in /system partition for REL branches as these branches are
+# expected to have stable API/ABI surfaces.
+ifneq (REL,$(PLATFORM_VERSION_CODENAME))
+  PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+endif

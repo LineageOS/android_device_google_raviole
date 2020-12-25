@@ -19,6 +19,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     EuiccSupportPixelOverlay
 
+# Parts
+PRODUCT_PACKAGES += \
+    GoogleParts
+
 # Radio
 DEVICE_MANIFEST_FILE += \
     device/google/raviole/manifest_radio.xml

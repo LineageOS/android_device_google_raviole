@@ -18,6 +18,9 @@ PRODUCT_PACKAGES += \
 DEVICE_MANIFEST_FILE += \
     device/google/raviole/manifest_radio.xml
 
+# PowerShare
+include hardware/google/pixel/powershare/device.mk
+
 # Touch
 include hardware/google/pixel/touch/device.mk
 

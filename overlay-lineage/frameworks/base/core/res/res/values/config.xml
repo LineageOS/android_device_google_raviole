@@ -28,4 +28,8 @@
         <!-- ImsService -->
         <item>com.shannon.imsservice</item>
     </string-array>
+
+    <!-- List of comma separated package names for which we the system will not show crash, ANR,
+         etc. dialogs. -->
+    <string translatable="false" name="config_appsNotReportingCrashes">com.google.android.euicc</string>
 </resources>

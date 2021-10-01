@@ -7,7 +7,6 @@ kernel/drivers/pps/pps_core.ko
 kernel/net/core/pktgen.ko
 kernel/net/wireless/cfg80211.ko
 kernel/net/mac80211/mac80211.ko
-extra/bcmdhd43752.ko
 extra/bcmdhd4389.ko
 extra/drv2624.ko
 extra/ftm5.ko

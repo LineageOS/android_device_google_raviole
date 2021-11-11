@@ -19,6 +19,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     EuiccSupportPixelOverlay
 
+# Kernel
+TARGET_PREBUILT_KERNEL := device/google/raviole-kernel/Image.lz4
+
 # Parts
 PRODUCT_PACKAGES += \
     GoogleParts

@@ -48,3 +48,6 @@ include device/google/gs101/sepolicy/raven-sepolicy.mk
 include device/google/gs101/wifi/BoardConfig-wifi.mk
 -include vendor/google_devices/gs101/prebuilts/BoardConfigVendor.mk
 -include vendor/google_devices/raven/proprietary/BoardConfigVendor.mk
+
+DEVICE_PATH := device/google/raviole
+include $(DEVICE_PATH)/$(TARGET_BOOTLOADER_BOARD_NAME)/BoardConfigLineage.mk

@@ -26,3 +26,5 @@ else
   -include vendor/google_devices/gs101/prebuilts/BoardConfigVendor.mk
   -include vendor/google_devices/oriole/proprietary/BoardConfigVendor.mk
 endif
+
+include device/google/raviole/oriole/BoardConfigLineage.mk

@@ -50,4 +50,5 @@ include device/google/gs101/wifi/BoardConfig-wifi.mk
 -include vendor/google_devices/raven/proprietary/BoardConfigVendor.mk
 
 DEVICE_PATH := device/google/raviole
+VENDOR_PATH := vendor/google/raven
 include $(DEVICE_PATH)/$(TARGET_BOOTLOADER_BOARD_NAME)/BoardConfigLineage.mk

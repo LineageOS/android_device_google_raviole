@@ -11,6 +11,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit device configuration
 DEVICE_CODENAME := raven
 DEVICE_PATH := device/google/raviole
+VENDOR_PATH := vendor/google/raven
 $(call inherit-product, $(DEVICE_PATH)/aosp_$(DEVICE_CODENAME).mk)
 $(call inherit-product, device/google/gs101/lineage_common.mk)
 $(call inherit-product, $(DEVICE_PATH)/$(DEVICE_CODENAME)/device-lineage.mk)
@@ -31,3 +32,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="raven-user 14 AP2A.240905.003.F1 12235381 release-keys"
 
 BUILD_FINGERPRINT := google/raven/raven:14/AP2A.240905.003.F1/12235381:user/release-keys
+
+$(call inherit-product, $(VENDOR_PATH)/$(DEVICE_CODENAME)-vendor.mk)

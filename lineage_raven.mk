@@ -26,3 +26,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="raven-user 13 TP1A.220905.004 8927612 release-keys"
 
 BUILD_FINGERPRINT := google/raven/raven:13/TP1A.220905.004/8927612:user/release-keys
+
+$(call inherit-product, vendor/google/raven/raven-vendor.mk)

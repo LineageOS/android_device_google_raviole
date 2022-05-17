@@ -276,3 +276,7 @@ endif
 # Disable Settings large-screen optimization enabled by Window Extensions
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.settings.large_screen_opt.enabled=false
+
+# HBM
+PRODUCT_PACKAGES += \
+    HbmSVManagerOverlay

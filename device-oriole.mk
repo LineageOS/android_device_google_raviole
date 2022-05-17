@@ -217,3 +217,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # This device is shipped with 31 (Android S)
 PRODUCT_SHIPPING_API_LEVEL := 31
+
+# HBM
+PRODUCT_PACKAGES += \
+    HbmSVManagerOverlay

@@ -287,6 +287,7 @@ VENDOR_SKIP_FILES=(
     "etc/bluetooth_power_limits_EU.csv"
     "etc/bluetooth_power_limits_JP.csv"
     "etc/bluetooth_power_limits_US.csv"
+    "etc/default-permissions/default-permissions_talkback.xml"
     "etc/default_volume_tables.xml"
     "etc/display_colordata_cal0.pb"
     "etc/display_colordata_dev_cal0.pb"

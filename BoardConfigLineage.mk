@@ -6,4 +6,17 @@
 
 BUILD_BROKEN_DUP_RULES := true
 
+# Kernel
+TARGET_KERNEL_DTBO_PREFIX := dts/
+TARGET_KERNEL_DTBO := google/dtbo.img
+TARGET_KERNEL_DTB := \
+    google/gs101-a0.dtb \
+    google/gs101-b0.dtb
+TARGET_KERNEL_SOURCE := kernel/google/raviole/kernel
+
+# Kernel modules
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat device/google/raviole/vendor_dlkm.modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat device/google/raviole/vendor_boot.modules.load))
+
+# Manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/lineage/config/device_framework_matrix.xml

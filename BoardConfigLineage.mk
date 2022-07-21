@@ -19,3 +19,26 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD := $(foreach m,$(BOARD_VENDOR_KERNEL_MODULES_LO
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW := $(strip $(shell cat device/google/raviole/vendor_boot.modules.load))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(foreach m,$(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW),$(notdir $(m)))
 BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)
+
+TARGET_KERNEL_EXT_MODULES := \
+    amplifiers/audiometrics \
+    amplifiers/cs35l41 \
+    amplifiers/cs40l25 \
+    amplifiers/drv2624 \
+    aoc \
+    aoc/alsa \
+    aoc/usb \
+    bluetooth/broadcom \
+    bms \
+    display/samsung \
+    edgetpu/abrolhos/drivers/edgetpu \
+    gpu/mali_kbase \
+    gpu/mali_pixel \
+    lwis \
+    nfc \
+    power/reset \
+    touch/common \
+    touch/fts/ftm5 \
+    touch/sec \
+    uwb/kernel \
+    wlan/bcmdhd4389

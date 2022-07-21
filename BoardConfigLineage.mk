@@ -21,5 +21,30 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW := $(strip $(shell cat device/googl
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(foreach m,$(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW),$(notdir $(m)))
 BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)
 
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/google/raviole/google-modules
+TARGET_KERNEL_EXT_MODULES := \
+    display/samsung \
+    wlan/bcmdhd43752 \
+    wlan/bcmdhd4389 \
+    gpu/mali_pixel \
+    gpu/mali_kbase \
+    lwis \
+    edgetpu/drivers/edgetpu \
+    bms \
+    amplifiers/drv2624 \
+    amplifiers/cs40l25 \
+    amplifiers/cs35l41 \
+    amplifiers/audiometrics \
+    aoc \
+    aoc/alsa \
+    aoc/usb \
+    touch/common \
+    touch/fts/ftm5 \
+    touch/sec \
+    power/reset \
+    bluetooth/broadcom \
+    nfc \
+    uwb/kernel
+
 # Manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/lineage/config/device_framework_matrix.xml

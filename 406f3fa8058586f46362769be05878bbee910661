@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c046cb0c_1e183f05",
+        "filename": "BoardConfigLineage.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-07-22T02:18:42Z",
+      "side": 1,
+      "message": "4 spaces, not tabs",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "406f3fa8058586f46362769be05878bbee910661",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

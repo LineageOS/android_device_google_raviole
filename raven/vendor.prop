@@ -2,15 +2,14 @@
 drm.service.enabled=true
 media.mediadrmservice.enable=true
 
-# Graphics
-ro.hardware.egl=mali
-
 # Radio
 persist.vendor.ril.use_radio_hal=1.6
 ro.vendor.config.build_carrier=europen
-ro.vendor.config.build_carrier=europen
 vendor.rild.libpath=libsitril.so
 persist.vendor.ril.ecc.xml=1
+
+# SSR
+vendor.debug.ssrdump.type=sscoredump
 
 # UWB
 ro.vendor.uwb.calibration.calibrationpaths=/vendor/etc/calib_paths

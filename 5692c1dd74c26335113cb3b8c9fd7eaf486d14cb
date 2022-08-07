@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c6579d_3d97a73b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 30863
+      },
+      "writtenOn": "2022-08-07T22:04:32Z",
+      "side": 1,
+      "message": "I wonder if it would make sense to try to bump just the fingerprint stuff to the Android 13 beta, which has been reported as being much more reliable and secure.\n\n(But perhaps that\u0027s better for a later change?)",
+      "revId": "5692c1dd74c26335113cb3b8c9fd7eaf486d14cb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

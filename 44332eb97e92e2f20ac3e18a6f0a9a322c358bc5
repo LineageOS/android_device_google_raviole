@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac39814a_ca98ac70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 23782
+      },
+      "writtenOn": "2022-08-10T19:30:09Z",
+      "side": 1,
+      "message": "Put this in gs101-inline-kernel. If it shouldn\u0027t be there, feel free to ping me and/or put it back to raviole-inline-build.",
+      "revId": "44332eb97e92e2f20ac3e18a6f0a9a322c358bc5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

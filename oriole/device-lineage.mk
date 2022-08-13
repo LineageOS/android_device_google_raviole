@@ -11,3 +11,7 @@ DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/$(DEVICE_CODENAME)/overlay-lineage
 # HBM
 PRODUCT_PACKAGES += \
     HbmSVManagerOverlay
+
+# Init
+PRODUCT_PACKAGES += \
+    init.recovery.oriole.touch.rc

@@ -41,4 +41,5 @@ TARGET_KERNEL_EXT_MODULES := \
     touch/fts/ftm5 \
     touch/sec \
     uwb/kernel \
+    video/gchips \
     wlan/bcmdhd4389

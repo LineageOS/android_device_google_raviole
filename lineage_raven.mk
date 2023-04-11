@@ -25,8 +25,8 @@ TARGET_SCREEN_WIDTH := 1440
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=raven \
-    PRIVATE_BUILD_DESC="raven-user 13 TQ2A.230305.008.E1 9677224 release-keys"
+    PRIVATE_BUILD_DESC="raven-user 13 TQ2A.230405.003.E1 9802792 release-keys"
 
-BUILD_FINGERPRINT := google/raven/raven:13/TQ2A.230305.008.E1/9677224:user/release-keys
+BUILD_FINGERPRINT := google/raven/raven:13/TQ2A.230405.003.E1/9802792:user/release-keys
 
 $(call inherit-product, vendor/google/raven/raven-vendor.mk)

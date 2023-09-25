@@ -25,8 +25,8 @@ TARGET_SCREEN_WIDTH := 1080
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=oriole \
-    PRIVATE_BUILD_DESC="oriole-user 13 TQ3A.230805.001 10316531 release-keys"
+    PRIVATE_BUILD_DESC="oriole-user 13 TQ3A.230901.001 10750268 release-keys"
 
-BUILD_FINGERPRINT := google/oriole/oriole:13/TQ3A.230805.001/10316531:user/release-keys
+BUILD_FINGERPRINT := google/oriole/oriole:13/TQ3A.230901.001/10750268:user/release-keys
 
 $(call inherit-product, vendor/google/oriole/oriole-vendor.mk)

@@ -32,8 +32,8 @@ TARGET_KERNEL_EXT_MODULES := \
     bms \
     display/samsung \
     edgetpu/abrolhos/drivers/edgetpu \
-    gpu/mali_kbase \
     gpu/mali_pixel \
+    gpu/mali_kbase \
     lwis \
     nfc \
     power/reset \

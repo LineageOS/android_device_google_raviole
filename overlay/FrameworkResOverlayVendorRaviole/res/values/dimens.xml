@@ -5,5 +5,5 @@
 -->
 <resources>
     <!-- Default paddings for content around the corners. -->
-    <dimen name="rounded_corner_content_padding">50px</dimen>
+    <dimen name="rounded_corner_content_padding">14dp</dimen>
 </resources>

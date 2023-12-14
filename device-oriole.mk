@@ -78,7 +78,7 @@ PRODUCT_COPY_FILES += \
 	device/google/raviole/powerhint-oriole-mainline.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint-mainline.json \
 
 # Bluetooth sepolicy
-include device/google/gs101-sepolicy/oriole-sepolicy.mk
+include device/google/gs101/sepolicy/oriole-sepolicy.mk
 
 # Bluetooth
 PRODUCT_PRODUCT_PROPERTIES += \

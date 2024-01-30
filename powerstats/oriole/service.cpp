@@ -41,17 +41,24 @@ std::map<std::string, std::string> displayChannelNames = {
 
 void addDisplay(std::shared_ptr<PowerStats> p) {
     // Add display residency stats
-    std::vector<std::string> states = {
-        "Off",
-        "LP: 1080x2400@30",
-        "On: 1080x2400@60",
-        "On: 1080x2400@90",
-        "HBM: 1080x2400@60",
-    };
+    struct stat buffer;
+    if (!stat("/sys/class/drm/card0/device/primary-panel/time_in_state", &buffer)) {
+        // time_in_state exists
+        addDisplayMrr(p);
+    } else {
+        // time_in_state doesn't exist
+        std::vector<std::string> states = {
+            "Off",
+            "LP: 1080x2400@30",
+            "On: 1080x2400@60",
+            "On: 1080x2400@90",
+            "HBM: 1080x2400@60",
+        };
 
-    p->addStateResidencyDataProvider(std::make_unique<DisplayStateResidencyDataProvider>("Display",
-            "/sys/class/backlight/panel0-backlight/state",
-            states));
+        p->addStateResidencyDataProvider(std::make_unique<DisplayStateResidencyDataProvider>("Display",
+                "/sys/class/backlight/panel0-backlight/state",
+                states));
+    }
 
     std::string rev = android::base::GetProperty(kBootRevision, "");
 

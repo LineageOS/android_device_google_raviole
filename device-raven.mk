@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Restrict the visibility of Android.bp files to improve build analysis time
+$(call inherit-product-if-exists, vendor/google/products/sources_pixel.mk)
+
 TARGET_KERNEL_DIR ?= device/google/raviole-kernel
 TARGET_BOARD_KERNEL_HEADERS := device/google/raviole-kernel/kernel-headers
 
@@ -26,21 +29,28 @@ $(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/rave
 $(call inherit-product-if-exists, vendor/google/camera/devices/raviole/raven/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/WallpapersRaven.mk)
 
-GOODIX_CONFIG_BUILD_VERSION := g6_trusty
 DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay
 
 include device/google/raviole/audio/raven/audio-tables.mk
 include device/google/gs101/device-shipping-common.mk
-include device/google/gs101/fingerprint/udfps_common.mk
 include device/google/gs101/telephony/pktrouter.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/lsi/lsi.mk
 
-
-ifeq ($(filter factory_raven, $(TARGET_PRODUCT)),)
-include device/google/gs101/fingerprint/udfps_shipping.mk
+# Fingerprint HAL
+GOODIX_CONFIG_BUILD_VERSION := g6_trusty
+ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/24Q1
+else ifneq (,$(filter AP2%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/24Q2
 else
-include device/google/gs101/fingerprint/udfps_factory.mk
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/trunk
+endif
+$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_common.mk)
+ifeq ($(filter factory%, $(TARGET_PRODUCT)),)
+$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_shipping.mk)
+else
+$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_factory.mk)
 endif
 
 ifeq ($(filter factory_raven, $(TARGET_PRODUCT)),)
@@ -77,10 +87,14 @@ PRODUCT_COPY_FILES += \
 
 # Power HAL config
 PRODUCT_COPY_FILES += \
-	device/google/raviole/powerhint-raven.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+	device/google/raviole/powerhint-raven.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
+	device/google/raviole/powerhint-raven-mainline.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint-mainline.json
 
 PRODUCT_PACKAGES += \
       UwbOverlayR4
+
+# Bluetooth sepolicy
+include device/google/gs101-sepolicy/raven-sepolicy.mk
 
 # Bluetooth
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -164,7 +178,8 @@ DEVICE_MANIFEST_FILE += \
 PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vendor.vibrator.hal.long.frequency.shift=15 \
     ro.vendor.vibrator.hal.device.mass=0.21 \
-    ro.vendor.vibrator.hal.loc.coeff=2.5
+    ro.vendor.vibrator.hal.loc.coeff=2.5 \
+    persist.vendor.vibrator.hal.chirp.enabled=0
 
 ACTUATOR_MODEL := luxshare_ict_081545
 
@@ -188,7 +203,7 @@ endif
 
 # Increment the SVN for any official public releases
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=73
+    ro.vendor.build.svn=75
 
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -230,6 +245,13 @@ PRODUCT_PACKAGES += \
 
 # Trusty liboemcrypto.so
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts
+ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q1
+else ifneq (,$(filter AP2%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q2
+else
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/trunk
+endif
 
 # Set support one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -249,7 +271,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # RKPD
 PRODUCT_PRODUCT_PROPERTIES += \
-    remote_provisioning.enable_rkpd=true \
     remote_provisioning.hostname=remoteprovisioning.googleapis.com \
 
 # Set zram size

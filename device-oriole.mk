@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Restrict the visibility of Android.bp files to improve build analysis time
+$(call inherit-product-if-exists, vendor/google/products/sources_pixel.mk)
+
 TARGET_KERNEL_DIR ?= device/google/raviole-kernel
 TARGET_BOARD_KERNEL_HEADERS := device/google/raviole-kernel/kernel-headers
 
@@ -25,21 +28,29 @@ $(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/orio
 $(call inherit-product-if-exists, vendor/google/camera/devices/raviole/oriole/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/WallpapersOriole.mk)
 
-GOODIX_CONFIG_BUILD_VERSION := g6_trusty
 DEVICE_PACKAGE_OVERLAYS += device/google/raviole/oriole/overlay
 
 include device/google/raviole/audio/oriole/audio-tables.mk
 include device/google/gs101/device-shipping-common.mk
-include device/google/gs101/fingerprint/udfps_common.mk
 include device/google/gs101/telephony/pktrouter.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/stm/stm11.mk
 
-ifeq ($(filter factory_oriole, $(TARGET_PRODUCT)),)
-include device/google/gs101/fingerprint/udfps_shipping.mk
+# Fingerprint HAL
+GOODIX_CONFIG_BUILD_VERSION := g6_trusty
+ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/24Q1
+else ifneq (,$(filter AP2%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/24Q2
 else
-include device/google/gs101/fingerprint/udfps_factory.mk
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/trunk
+endif
+$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_common.mk)
+ifeq ($(filter factory%, $(TARGET_PRODUCT)),)
+$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_shipping.mk)
+else
+$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_factory.mk)
 endif
 
 # go/lyric-soong-variables
@@ -68,7 +79,11 @@ PRODUCT_COPY_FILES += \
 
 # Power HAL config
 PRODUCT_COPY_FILES += \
-	device/google/raviole/powerhint-oriole.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+	device/google/raviole/powerhint-oriole.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
+	device/google/raviole/powerhint-oriole-mainline.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint-mainline.json \
+
+# Bluetooth sepolicy
+include device/google/gs101-sepolicy/oriole-sepolicy.mk
 
 # Bluetooth
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -135,9 +150,10 @@ PRODUCT_COPY_FILES += \
 	device/google/raviole/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
 
 PRODUCT_PACKAGES += \
-	NfcNci \
+	$(RELEASE_PACKAGE_NFC_STACK) \
 	Tag \
-	android.hardware.nfc-service.st
+	android.hardware.nfc-service.st \
+	NfcOverlayOriole
 
 # SecureElement
 PRODUCT_PACKAGES += \
@@ -157,7 +173,8 @@ DEVICE_MANIFEST_FILE += \
 PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vendor.vibrator.hal.long.frequency.shift=15 \
     ro.vendor.vibrator.hal.device.mass=0.205 \
-    ro.vendor.vibrator.hal.loc.coeff=2.25
+    ro.vendor.vibrator.hal.loc.coeff=2.25 \
+    persist.vendor.vibrator.hal.chirp.enabled=0
 
 ACTUATOR_MODEL := luxshare_ict_081545
 
@@ -184,7 +201,7 @@ endif
 
 # Increment the SVN for any official public releases
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=75
+    ro.vendor.build.svn=77
 
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -222,6 +239,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Trusty liboemcrypto.so
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts
+ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q1
+else ifneq (,$(filter AP2%,$(RELEASE_PLATFORM_VERSION)))
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q2
+else
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/trunk
+endif
 
 # Set support one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -241,7 +265,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # RKPD
 PRODUCT_PRODUCT_PROPERTIES += \
-    remote_provisioning.enable_rkpd=true \
     remote_provisioning.hostname=remoteprovisioning.googleapis.com \
 
 # Set zram size

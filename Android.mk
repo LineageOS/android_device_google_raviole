@@ -20,8 +20,6 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
-LOCAL_PATH := $(call my-dir)
-
 $(eval $(call declare-copy-files-license-metadata,device/google/raviole,default-permissions.xml,SPDX-license-identifier-Apache-2.0,notice,build/soong/licenses/LICENSE,))
 $(eval $(call declare-copy-files-license-metadata,device/google/raviole,libnfc-nci-raven.conf,SPDX-license-identifier-Apache-2.0,notice,build/soong/licenses/LICENSE,))
 $(eval $(call declare-copy-files-license-metadata,device/google/raviole,libnfc-nci.conf,SPDX-license-identifier-Apache-2.0,notice,build/soong/licenses/LICENSE,))
@@ -43,8 +41,6 @@ $(eval $(call declare-1p-copy-files,device/google/raviole,audio_policy_configura
 # their rules should be written here.
 
 ifeq ($(USES_DEVICE_GOOGLE_RAVIOLE),true)
-  include $(call first-makefiles-under,$(LOCAL_PATH))
-
 DM_LIBS := libdmengine.so libdmjavaplugin.so
 DM_32_SYMLINKS := $(addprefix $(TARGET_OUT_PRODUCT)/priv-app/DMService/lib/arm/,$(notdir $(DM_LIBS)))
 $(DM_32_SYMLINKS): $(LOCAL_INSTALLED_MODULE)

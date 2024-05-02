@@ -1,5 +1,5 @@
 #
-# Copyright 2020 The Android Open-Source Project
+# Copyright 2024 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,16 +14,4 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/google/gs101/aosp_common.mk)
-$(call inherit-product, device/google/raviole/raven_generic.mk)
-
-PRODUCT_NAME := aosp_raven
-PRODUCT_NAME_FOR_ATTESTATION := raven
-PRODUCT_DEVICE := raven
-PRODUCT_MODEL := AOSP on Raven
-PRODUCT_MODEL_FOR_ATTESTATION := Pixel 6 Pro
-PRODUCT_BRAND := Android
-PRODUCT_BRAND_FOR_ATTESTATION := google
-PRODUCT_MANUFACTURER := Google
-
-PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+$(call inherit-product, device/google/raviole/device-raven.mk)

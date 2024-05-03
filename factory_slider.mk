@@ -23,3 +23,6 @@ PRODUCT_DEVICE := slider
 PRODUCT_MODEL := Factory build on Slider
 PRODUCT_BRAND := Android
 PRODUCT_MANUFACTURER := Google
+
+# preloaded_nanoapps.json
+PRODUCT_SOONG_NAMESPACES += vendor/google_contexthub/devices/factory

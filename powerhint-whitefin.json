@@ -121,7 +121,7 @@
     },
     {
       "Name": "CPUBigClusterDownRateLimitUs",
-      "Path": "/sys/devices/system/cpu/cpu8/cpufreq/sched_pixel/down_rate_limit_us",
+      "Path": "/sys/devices/system/cpu/cpu6/cpufreq/sched_pixel/down_rate_limit_us",
       "Values": [
         "20000",
         "3000"

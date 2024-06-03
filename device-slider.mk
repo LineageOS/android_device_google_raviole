@@ -14,8 +14,9 @@
 # limitations under the License.
 #
 
-TARGET_KERNEL_DIR ?= device/google/raviole-kernel
-TARGET_BOARD_KERNEL_HEADERS := device/google/raviole-kernel/kernel-headers
+# Keeps flexibility for kasan and ufs builds
+TARGET_KERNEL_DIR ?= $(RELEASE_KERNEL_ORIOLE_DIR)
+TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_ORIOLE_DIR)/kernel-headers
 
 $(call inherit-product-if-exists, vendor/google_devices/raviole/prebuilts/device-vendor-slider.mk)
 $(call inherit-product-if-exists, vendor/google_devices/gs101/prebuilts/device-vendor.mk)
@@ -105,13 +106,6 @@ PRODUCT_SOONG_NAMESPACES += device/google/raviole/powerstats/slider
 
 # Trusty liboemcrypto.so
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts
-ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q1
-else ifneq (,$(filter AP2% AP3%,$(RELEASE_PLATFORM_VERSION)))
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q2
-else
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/trunk
-endif
 
 # tetheroffload HAL
 PRODUCT_PACKAGES += \
@@ -137,3 +131,5 @@ else
 		device/google/raviole/location/gps_user.xml:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
 endif
 
+# Disable AVF Remote Attestation
+PRODUCT_AVF_REMOTE_ATTESTATION_DISABLED := true

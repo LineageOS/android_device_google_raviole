@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 $(call inherit-product, device/google/gs101/aosp_common.mk)
-$(call inherit-product, device/google/raviole/device-whitefin.mk)
+$(call inherit-product, device/google/raviole/whitefin_generic.mk)
 
 PRODUCT_NAME := aosp_whitefin
 PRODUCT_DEVICE := whitefin

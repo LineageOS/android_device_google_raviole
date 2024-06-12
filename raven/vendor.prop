@@ -2,9 +2,6 @@
 drm.service.enabled=true
 media.mediadrmservice.enable=true
 
-# Graphics
-ro.gfx.angle.supported=true
-
 # Radio
 persist.vendor.ril.ecc.use.xml=1
 persist.vendor.ril.support_nr_ds=0

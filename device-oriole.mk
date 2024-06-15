@@ -20,6 +20,15 @@ $(call inherit-product-if-exists, vendor/google/products/sources_pixel.mk)
 TARGET_KERNEL_DIR ?= device/google/raviole-kernel
 TARGET_BOARD_KERNEL_HEADERS := device/google/raviole-kernel/kernel-headers
 
+ifdef RELEASE_GOOGLE_ORIOLE_KERNEL_VERSION
+TARGET_LINUX_KERNEL_VERSION := $(RELEASE_GOOGLE_ORIOLE_KERNEL_VERSION)
+endif
+
+ifdef RELEASE_GOOGLE_ORIOLE_KERNEL_DIR
+TARGET_KERNEL_DIR := $(RELEASE_GOOGLE_ORIOLE_KERNEL_DIR)
+TARGET_BOARD_KERNEL_HEADERS := $(RELEASE_GOOGLE_ORIOLE_KERNEL_DIR)/kernel-headers
+endif
+
 $(call inherit-product-if-exists, vendor/google_devices/raviole/prebuilts/device-vendor-oriole.mk)
 $(call inherit-product-if-exists, vendor/google_devices/gs101/prebuilts/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/google_devices/gs101/proprietary/device-vendor.mk)
@@ -41,7 +50,7 @@ include device/google/gs-common/touch/stm/stm11.mk
 GOODIX_CONFIG_BUILD_VERSION := g6_trusty
 ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/24Q1
-else ifneq (,$(filter AP2%,$(RELEASE_PLATFORM_VERSION)))
+else ifneq (,$(filter AP2% AP3%,$(RELEASE_PLATFORM_VERSION)))
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/24Q2
 else
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/firmware/fingerprint/trunk
@@ -201,7 +210,7 @@ endif
 
 # Increment the SVN for any official public releases
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=80
+    ro.vendor.build.svn=82
 
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -241,7 +250,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts
 ifneq (,$(filter AP1%,$(RELEASE_PLATFORM_VERSION)))
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q1
-else ifneq (,$(filter AP2%,$(RELEASE_PLATFORM_VERSION)))
+else ifneq (,$(filter AP2% AP3%,$(RELEASE_PLATFORM_VERSION)))
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/24Q2
 else
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts/trusty/trunk

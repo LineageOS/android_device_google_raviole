@@ -3,10 +3,8 @@ import /vendor/etc/init/hw/init.gs101.rc
 import /vendor/etc/init/hw/init.raviole.rc
 
 on init
-    # logbuffer
-    chown system system /dev/logbuffer_5-0057
     # nvmem dump
-    chown system system /sys/bus/nvmem/devices/5-00500/nvmem
+    chown system system /sys/bus/nvmem/devices/8-00500/nvmem
 
     # Power Stats HAL
     chown system system /sys/devices/platform/10d30000.spi/spi_master/spi10/spi10.0/uwb/power_stats

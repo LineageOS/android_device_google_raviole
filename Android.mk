@@ -36,18 +36,3 @@ $(eval $(call declare-copy-files-license-metadata,device/google/raviole,wpa_supp
 $(eval $(call declare-copy-files-license-metadata,device/google/raviole,wpa_supplicant_overlay.conf,SPDX-license-identifier-Apache-2.0,notice,build/soong/licenses/LICENSE,))
 
 $(eval $(call declare-1p-copy-files,device/google/raviole,audio_policy_configuration.xml))
-
-# if some modules are built directly from this directory (not subdirectories),
-# their rules should be written here.
-
-ifeq ($(USES_DEVICE_GOOGLE_RAVIOLE),true)
-HBM_LIBS := libhbmsvmanager_jni.so
-HBM_SYMLINKS := $(addprefix $(TARGET_OUT_SYSTEM_EXT)/priv-app/HbmSVManager/lib/arm64/,$(notdir $(HBM_LIBS)))
-$(HBM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "HBM lib link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system_ext/lib64/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(HBM_SYMLINKS)
-endif

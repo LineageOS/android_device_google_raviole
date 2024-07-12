@@ -215,7 +215,7 @@ ifdef RELEASE_SVN_RAVEN
 TARGET_SVN ?= $(RELEASE_SVN_RAVEN)
 else
 # Set this for older releases that don't use build flag
-TARGET_SVN ?= 84
+TARGET_SVN ?= 85
 endif
 
 PRODUCT_VENDOR_PROPERTIES += \

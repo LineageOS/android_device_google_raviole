@@ -197,8 +197,34 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 endif
 
 # Increment the SVN for any official public releases
+ifdef RELEASE_SVN_RAVEN
+TARGET_SVN ?= $(RELEASE_SVN_RAVEN)
+else
+# Set this for older releases that don't use build flag
+TARGET_SVN ?= 86
+endif
+
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=84
+    ro.vendor.build.svn=$(TARGET_SVN)
+
+# Set device family property for SMR
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.device_family=O6R4B9
+
+# Set build properties for SMR builds
+ifeq ($(RELEASE_IS_SMR), true)
+    ifneq (,$(RELEASE_BASE_OS_RAVEN))
+        PRODUCT_BASE_OS := $(RELEASE_BASE_OS_RAVEN)
+    endif
+endif
+
+# Set build properties for EMR builds
+ifeq ($(RELEASE_IS_EMR), true)
+    ifneq (,$(RELEASE_BASE_OS_RAVEN))
+        PRODUCT_PROPERTY_OVERRIDES += \
+        ro.build.version.emergency_base_os=$(RELEASE_BASE_OS_RAVEN)
+    endif
+endif
 
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -254,8 +280,8 @@ PRODUCT_PACKAGES += \
 	vendor.samsung_slsi.hardware.tetheroffload@1.1-service
 
 # Override default distortion output gain according to UX experiments
-PRODUCT_PRODUCT_PROPERTIES += \
-    vendor.audio.hapticgenerator.distortion.output.gain=0.5
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.audio.hapticgenerator.distortion.output.gain=0.32
 
 # RKPD
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -292,11 +318,21 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Location
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+    ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
         PRODUCT_COPY_FILES += \
-		device/google/raviole/location/gps.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
+            device/google/raviole/location/gps.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
+    else
+        PRODUCT_COPY_FILES += \
+            device/google/raviole/location/gps.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
+    endif
 else
+    ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
         PRODUCT_COPY_FILES += \
-		device/google/raviole/location/gps_user.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
+            device/google/raviole/location/gps_user.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
+    else
+        PRODUCT_COPY_FILES += \
+            device/google/raviole/location/gps_user.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
+    endif
 endif
 
 # Enable DeviceAsWebcam support
@@ -309,3 +345,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Disable AVF Remote Attestation
 PRODUCT_AVF_REMOTE_ATTESTATION_DISABLED := true
+
+# Bluetooth device id
+PRODUCT_PRODUCT_PROPERTIES += \
+    bluetooth.device_id.product_id=20487

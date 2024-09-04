@@ -199,3 +199,10 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     libevent.vendor
+
+# Enable loading of prebuilt modules in recovery
+RECOVERY_LOAD_PREBUILT_MODULES := ftm5.ko sec_touch.ko
+TARGET_PREBUILT_KERNEL_DIR := device/google/raviole-kernel
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.recovery.load_modules=true

@@ -16,6 +16,23 @@
       "message": "hey why my finger print is disabled",
       "revId": "f861bb6451d8f94bf94fec65fc4dcc8730288fd8",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36da6146_a511c6e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34139
+      },
+      "writtenOn": "2024-09-20T22:50:54Z",
+      "side": 1,
+      "message": "why my finger print is disabled how to enable it",
+      "revId": "f861bb6451d8f94bf94fec65fc4dcc8730288fd8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

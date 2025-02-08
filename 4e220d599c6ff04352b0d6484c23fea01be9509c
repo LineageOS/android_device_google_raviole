@@ -16,6 +16,24 @@
       "message": "Somehow throws\n```\nERROR: For 417641, could not determine the project path for project LineageOS/android_device_google_raviole\n```\neven though the `22.1` branch is synced and the `V_asb_2025-02` topic is picked including syncing after merging the changes due to 417621.",
       "revId": "4e220d599c6ff04352b0d6484c23fea01be9509c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d859e07d_d2f940ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-02-08T20:22:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0752299f_230ed6f4",
+      "revId": "4e220d599c6ff04352b0d6484c23fea01be9509c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []

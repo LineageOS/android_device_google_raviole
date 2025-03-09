@@ -43,7 +43,6 @@ DEVICE_PACKAGE_OVERLAYS += device/google/raviole/oriole/overlay
 include device/google/raviole/audio/oriole/audio-tables.mk
 include device/google/gs101/device-shipping-common.mk
 include device/google/gs101/telephony/pktrouter.mk
-include hardware/google/pixel/vibrator/cs40l25/device.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/stm/stm11.mk
 
@@ -70,9 +69,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/google/gs101/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.oriole.rc
 
-# insmod files
+# insmod files. Kernel 5.10 prebuilts don't provide these yet, so provide our
+# own copy if they're not in the prebuilts.
+# TODO(b/369686096): drop this when 5.10 is gone.
+ifeq ($(wildcard $(TARGET_KERNEL_DIR)/init.insmod.*.cfg),)
 PRODUCT_COPY_FILES += \
-	device/google/raviole/init.insmod.oriole.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.oriole.cfg
+	device/google/raviole/init.insmod.oriole.cfg:$(TARGET_COPY_OUT_VENDOR_DLKM)/etc/init.insmod.oriole.cfg
+endif
 
 # Thermal Config
 PRODUCT_COPY_FILES += \
@@ -155,6 +158,12 @@ PRODUCT_PACKAGES += \
 	Tag \
 	android.hardware.nfc-service.st \
 	NfcOverlayOriole
+
+# Shared Modem Platform
+SHARED_MODEM_PLATFORM_VENDOR := lassen
+
+# Shared Modem Platform
+include device/google/gs-common/modem/modem_svc_sit/shared_modem_platform.mk
 
 # SecureElement
 PRODUCT_PACKAGES += \
@@ -355,3 +364,8 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 $(call inherit-product-if-exists, device/google/common/etm/device-userdebug-modules.mk)
 endif
 endif
+
+# PlayVideos
+PLAYVIDEOS_VERSION_DIR := 4.20.6
+$(call soong_config_set_bool,playvideos,use_device_specific_version,true)
+PRODUCT_SOONG_NAMESPACES += vendor/unbundled_google/packages/PlayVideos/$(PLAYVIDEOS_VERSION_DIR)

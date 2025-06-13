@@ -26,9 +26,9 @@ include device/google/gs-common/wireless_charger/wireless_charger.mk
 
 # Build necessary packages for vendor
 
-# Codec2
+# Dumpstate
 PRODUCT_PACKAGES += \
-    libexynosv4l2
+    dump_gsc.sh
 
 # Fingerprint
 PRODUCT_COPY_FILES += \

@@ -60,7 +60,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/UWB-calibration-ce.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-ch.conf \
     $(LOCAL_PATH)/UWB-calibration-jp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-jp.conf \
     $(LOCAL_PATH)/UWB-calibration-tw.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-tw.conf \
-    $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-ar.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-am.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-az.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-by.conf \
@@ -68,10 +67,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-kz.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-kg.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-np.conf \
-    $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-pk.conf \
-    $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-py.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-ru.conf \
-    $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-sb.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-tj.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-tm.conf \
     $(LOCAL_PATH)/UWB-calibration-restricted.conf:$(TARGET_COPY_OUT_VENDOR)/etc/uwb/UWB-calibration-ua.conf \

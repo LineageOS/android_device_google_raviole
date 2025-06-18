@@ -49,11 +49,7 @@ include device/google/gs-common/touch/stm/stm11.mk
 # Fingerprint HAL
 GOODIX_CONFIG_BUILD_VERSION := g6_trusty
 $(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_common.mk)
-ifeq ($(filter factory%, $(TARGET_PRODUCT)),)
 $(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_shipping.mk)
-else
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_factory.mk)
-endif
 
 # go/lyric-soong-variables
 $(call soong_config_set,lyric,camera_hardware,oriole)

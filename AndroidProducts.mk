@@ -16,32 +16,6 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_oriole.mk \
-    $(LOCAL_DIR)/aosp_oriole_hwasan.mk \
-    $(LOCAL_DIR)/aosp_oriole_pgagnostic_64.mk \
-    $(LOCAL_DIR)/aosp_oriole_pkvm.mk \
-    $(LOCAL_DIR)/aosp_oriole_64.mk \
-    $(LOCAL_DIR)/factory_oriole.mk \
     $(LOCAL_DIR)/aosp_raven.mk \
-    $(LOCAL_DIR)/aosp_raven_hwasan.mk \
-    $(LOCAL_DIR)/haiku.mk \
-    $(LOCAL_DIR)/aosp_raven_pgagnostic_64.mk \
-    $(LOCAL_DIR)/aosp_raven_pkvm.mk \
-    $(LOCAL_DIR)/aosp_raven_64.mk \
-    $(LOCAL_DIR)/factory_raven.mk \
-    $(LOCAL_DIR)/aosp_slider.mk \
-    $(LOCAL_DIR)/aosp_slider_hwasan.mk \
-    $(LOCAL_DIR)/factory_slider.mk \
-    $(LOCAL_DIR)/full_slider.mk \
-    $(LOCAL_DIR)/aosp_whitefin.mk \
-    $(LOCAL_DIR)/aosp_whitefin_pkvm.mk \
-    $(LOCAL_DIR)/aosp_whitefin_hwasan.mk \
-    $(LOCAL_DIR)/aosp_whitefin_64.mk \
-    $(LOCAL_DIR)/factory_whitefin.mk \
     $(LOCAL_DIR)/lineage_oriole.mk \
     $(LOCAL_DIR)/lineage_raven.mk
-
-COMMON_LUNCH_CHOICES := \
-    aosp_slider-trunk_staging-userdebug \
-    aosp_whitefin-trunk_staging-userdebug \
-    aosp_oriole-trunk_staging-userdebug \
-    aosp_raven-trunk_staging-userdebug

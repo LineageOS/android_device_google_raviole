@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Restrict the visibility of Android.bp files to improve build analysis time
-$(call inherit-product-if-exists, vendor/google/products/sources_pixel.mk)
-
 ifdef RELEASE_GOOGLE_RAVEN_RADIO_DIR
 RELEASE_GOOGLE_PRODUCT_RADIO_DIR := $(RELEASE_GOOGLE_RAVEN_RADIO_DIR)
 endif
@@ -31,13 +28,6 @@ TARGET_KERNEL_DIR ?= $(RELEASE_KERNEL_RAVEN_DIR)
 TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_RAVEN_DIR)/kernel-headers
 
 $(call inherit-product, device/google/raviole/uwb/uwb_calibration_country.mk)
-$(call inherit-product-if-exists, vendor/google_devices/raviole/prebuilts/device-vendor-raven.mk)
-$(call inherit-product-if-exists, vendor/google_devices/gs101/prebuilts/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/gs101/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/raven/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/raven/device-vendor-raven.mk)
-$(call inherit-product-if-exists, vendor/google/camera/devices/raviole/raven/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/WallpapersRaven.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay
 
@@ -46,11 +36,6 @@ include device/google/gs101/device-shipping-common.mk
 include device/google/gs101/telephony/pktrouter.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/lsi/lsi.mk
-
-# Fingerprint HAL
-GOODIX_CONFIG_BUILD_VERSION := g6_trusty
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_common.mk)
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_shipping.mk)
 
 include device/google/raviole/uwb/uwb_calibration.mk
 
@@ -253,9 +238,6 @@ PRODUCT_PACKAGES += \
     SettingsOverlayGLU0G \
     SettingsOverlayG8V0U
 
-# Trusty liboemcrypto.so
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts
-
 # Set support one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true
@@ -329,8 +311,3 @@ PRODUCT_AVF_REMOTE_ATTESTATION_DISABLED := true
 # Raven: 0x4107
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device_id.product_id=16647
-
-# PlayVideos
-PLAYVIDEOS_VERSION_DIR := 4.20.6
-$(call soong_config_set_bool,playvideos,use_device_specific_version,true)
-PRODUCT_SOONG_NAMESPACES += vendor/unbundled_google/packages/PlayVideos/$(PLAYVIDEOS_VERSION_DIR)

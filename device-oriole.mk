@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Restrict the visibility of Android.bp files to improve build analysis time
-$(call inherit-product-if-exists, vendor/google/products/sources_pixel.mk)
-
 ifdef RELEASE_GOOGLE_ORIOLE_RADIO_DIR
 RELEASE_GOOGLE_PRODUCT_RADIO_DIR := $(RELEASE_GOOGLE_ORIOLE_RADIO_DIR)
 endif
@@ -30,14 +27,6 @@ TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_ORIOLE_VERSION)
 TARGET_KERNEL_DIR ?= $(RELEASE_KERNEL_ORIOLE_DIR)
 TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_ORIOLE_DIR)/kernel-headers
 
-$(call inherit-product-if-exists, vendor/google_devices/raviole/prebuilts/device-vendor-oriole.mk)
-$(call inherit-product-if-exists, vendor/google_devices/gs101/prebuilts/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/gs101/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/oriole/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/oriole/device-vendor-oriole.mk)
-$(call inherit-product-if-exists, vendor/google/camera/devices/raviole/oriole/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/raviole/proprietary/WallpapersOriole.mk)
-
 DEVICE_PACKAGE_OVERLAYS += device/google/raviole/oriole/overlay
 
 include device/google/raviole/audio/oriole/audio-tables.mk
@@ -45,11 +34,6 @@ include device/google/gs101/device-shipping-common.mk
 include device/google/gs101/telephony/pktrouter.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/stm/stm11.mk
-
-# Fingerprint HAL
-GOODIX_CONFIG_BUILD_VERSION := g6_trusty
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_common.mk)
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_shipping.mk)
 
 # go/lyric-soong-variables
 $(call soong_config_set,lyric,camera_hardware,oriole)
@@ -248,9 +232,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.gms.dck.eligible_wcc=2 \
     ro.gms.dck.se_capability=1
 
-# Trusty liboemcrypto.so
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/raviole/prebuilts
-
 # Set support one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true
@@ -322,8 +303,3 @@ PRODUCT_AVF_REMOTE_ATTESTATION_DISABLED := true
 # Oriole: 0x4106
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device_id.product_id=16646
-
-# PlayVideos
-PLAYVIDEOS_VERSION_DIR := 4.20.6
-$(call soong_config_set_bool,playvideos,use_device_specific_version,true)
-PRODUCT_SOONG_NAMESPACES += vendor/unbundled_google/packages/PlayVideos/$(PLAYVIDEOS_VERSION_DIR)

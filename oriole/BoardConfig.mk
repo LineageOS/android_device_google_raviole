@@ -41,9 +41,7 @@ BOARD_KERNEL_CMDLINE += disable_dma32=on
 include device/google/gs101/BoardConfig-common.mk
 include device/google/gs101/sepolicy/oriole-sepolicy.mk
 include device/google/gs101/wifi/BoardConfig-wifi.mk
--include vendor/google_devices/gs101/prebuilts/BoardConfigVendor.mk
 include device/google/gs-common/check_current_prebuilt/check_current_prebuilt.mk
--include vendor/google_devices/oriole/proprietary/BoardConfigVendor.mk
 
 DEVICE_PATH := device/google/raviole
 VENDOR_PATH := vendor/google/oriole

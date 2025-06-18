@@ -45,12 +45,6 @@ include device/google/gs101/wifi/BoardConfig-wifi.mk
 include device/google/gs-common/check_current_prebuilt/check_current_prebuilt.mk
 -include vendor/google_devices/raven/proprietary/BoardConfigVendor.mk
 
-ifneq (,$(RELEASE_ETM_IN_USERDEBUG_ENG))
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
--include device/google/common/etm/BoardUserdebugModules.mk
-endif
-endif
-
 DEVICE_PATH := device/google/raviole
 VENDOR_PATH := vendor/google/raven
 include $(DEVICE_PATH)/$(TARGET_BOOTLOADER_BOARD_NAME)/BoardConfigLineage.mk

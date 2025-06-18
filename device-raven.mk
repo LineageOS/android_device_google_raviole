@@ -111,20 +111,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/google/raviole/bluetooth/bt_vendor_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_vendor_overlay.conf
 
-# Bluetooth Hal Extension test tools
-PRODUCT_PACKAGES_ENG += \
-    sar_test \
-    hci_inject
-
-# userdebug specific
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-# Bluetooth LE Audio Hardware offload
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.bluetooth.leaudio_offload.supported=true \
-    persist.bluetooth.leaudio_offload.disabled=true \
-    persist.bluetooth.le_audio_test=false
-endif
-
 # MIPI Coex Configs
 PRODUCT_COPY_FILES += \
 	device/google/raviole/radio/raven_camera_rear_tele_mipi_coex_table.csv:$(TARGET_COPY_OUT_VENDOR)/etc/modem/camera_rear_tele_mipi_coex_table.csv
@@ -198,13 +184,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.odm.build.media_performance_class=31
 PRODUCT_SOONG_NAMESPACES += \
     device/google/raviole/powerstats/raven \
     device/google/raviole
-
-
-# userdebug specific
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-    PRODUCT_COPY_FILES += \
-        device/google/gs101/init.hardware.wlc.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.wlc.rc
-endif
 
 # Increment the SVN for any official public releases
 ifdef RELEASE_SVN_RAVEN
@@ -327,22 +306,12 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.opus.enabled=true
 
 # Location
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-    ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
-        PRODUCT_COPY_FILES += \
-            device/google/raviole/location/gps.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-    else
-        PRODUCT_COPY_FILES += \
-            device/google/raviole/location/gps.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-    endif
+ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
+    PRODUCT_COPY_FILES += \
+        device/google/raviole/location/gps_user.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
 else
-    ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
-        PRODUCT_COPY_FILES += \
-            device/google/raviole/location/gps_user.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-    else
-        PRODUCT_COPY_FILES += \
-            device/google/raviole/location/gps_user.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-    endif
+    PRODUCT_COPY_FILES += \
+        device/google/raviole/location/gps_user.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
 endif
 
 # Enable DeviceAsWebcam support
@@ -360,13 +329,6 @@ PRODUCT_AVF_REMOTE_ATTESTATION_DISABLED := true
 # Raven: 0x4107
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device_id.product_id=16647
-
-# ETM
-ifneq (,$(RELEASE_ETM_IN_USERDEBUG_ENG))
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-$(call inherit-product-if-exists, device/google/common/etm/device-userdebug-modules.mk)
-endif
-endif
 
 # PlayVideos
 PLAYVIDEOS_VERSION_DIR := 4.20.6

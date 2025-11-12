@@ -24,24 +24,15 @@ BOARD_KERNEL_CMDLINE += exynos_drm.load_sequential=1
 BOARD_KERNEL_CMDLINE += pcie-exynos-core.load_sequential=1
 BOARD_KERNEL_CMDLINE += g2d.load_sequential=1
 
-ifdef AUTOMOTIVE_PRODUCT_PATH
-  #RBC# include_top device/google/auto_tcu
-  #RBC# include_top device/google/pixel_tcu
-  #RBC# include_top device/google_car
-  include device/$(AUTOMOTIVE_PRODUCT_PATH)/BoardConfig.mk
-else
-  TARGET_SCREEN_DENSITY := 560
-endif
-
 TARGET_BOARD_INFO_FILE := device/google/raviole/board-info.txt
 TARGET_BOOTLOADER_BOARD_NAME := raven
-USES_DEVICE_GOOGLE_RAVIOLE := true
+TARGET_SCREEN_DENSITY := 560
+
 BOARD_KERNEL_CMDLINE += disable_dma32=on
 
 include device/google/gs101/BoardConfig-common.mk
 include device/google/gs101/sepolicy/raven-sepolicy.mk
 include device/google/gs101/wifi/BoardConfig-wifi.mk
-include device/google/gs-common/check_current_prebuilt/check_current_prebuilt.mk
 
 DEVICE_PATH := device/google/raviole
 VENDOR_PATH := vendor/google/raven

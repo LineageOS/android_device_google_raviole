@@ -30,11 +30,6 @@ include device/google/gs-common/touch/lsi/lsi.mk
 
 include device/google/raviole/uwb/uwb_calibration.mk
 
-# go/lyric-soong-variables
-$(call soong_config_set,lyric,camera_hardware,raven)
-$(call soong_config_set,lyric,tuning_product,raven)
-$(call soong_config_set,google3a_config,target_device,raven)
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.support_kernel_idle_timer=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.enable_frame_rate_override=true
 
@@ -112,9 +107,6 @@ PRODUCT_PACKAGES += \
 	NfcOverlayRaven
 
 # Shared Modem Platform
-SHARED_MODEM_PLATFORM_VENDOR := lassen
-
-# Shared Modem Platform
 include device/google/gs-common/modem/modem_svc_sit/shared_modem_platform.mk
 
 # SecureElement
@@ -131,15 +123,12 @@ PRODUCT_COPY_FILES += \
 DEVICE_MANIFEST_FILE += \
 	device/google/raviole/nfc/manifest_se.xml
 
-
 # Vibrator HAL
 PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vendor.vibrator.hal.long.frequency.shift=15 \
     ro.vendor.vibrator.hal.device.mass=0.21 \
     ro.vendor.vibrator.hal.loc.coeff=2.5 \
     persist.vendor.vibrator.hal.chirp.enabled=0
-
-ACTUATOR_MODEL := luxshare_ict_081545
 
 # Display LBE
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.lbe.supported=1
@@ -248,13 +237,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.opus.enabled=true
 
 # Location
-ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
-    PRODUCT_COPY_FILES += \
-        device/google/raviole/location/gps_user.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-else
-    PRODUCT_COPY_FILES += \
-        device/google/raviole/location/gps_user.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-endif
+PRODUCT_COPY_FILES += \
+    device/google/raviole/location/gps_user.6.1.xml.raven:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
 
 # Enable DeviceAsWebcam support
 PRODUCT_VENDOR_PROPERTIES += \

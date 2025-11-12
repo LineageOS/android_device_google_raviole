@@ -26,11 +26,6 @@ include device/google/gs101/device-shipping-common.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/stm/stm11.mk
 
-# go/lyric-soong-variables
-$(call soong_config_set,lyric,camera_hardware,oriole)
-$(call soong_config_set,lyric,tuning_product,oriole)
-$(call soong_config_set,google3a_config,target_device,oriole)
-
 # Init files
 PRODUCT_COPY_FILES += \
 	device/google/raviole/conf/init.raviole.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.raviole.rc \
@@ -107,9 +102,6 @@ PRODUCT_PACKAGES += \
 	NfcOverlayOriole
 
 # Shared Modem Platform
-SHARED_MODEM_PLATFORM_VENDOR := lassen
-
-# Shared Modem Platform
 include device/google/gs-common/modem/modem_svc_sit/shared_modem_platform.mk
 
 # SecureElement
@@ -132,8 +124,6 @@ PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vendor.vibrator.hal.device.mass=0.205 \
     ro.vendor.vibrator.hal.loc.coeff=2.25 \
     persist.vendor.vibrator.hal.chirp.enabled=0
-
-ACTUATOR_MODEL := luxshare_ict_081545
 
 # PowerStats HAL
 PRODUCT_SOONG_NAMESPACES += \
@@ -239,13 +229,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.opus.enabled=true
 
 # Location
-ifneq (,$(filter 6.1, $(TARGET_LINUX_KERNEL_VERSION)))
-    PRODUCT_COPY_FILES += \
-        device/google/raviole/location/gps_user.6.1.xml.oriole:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-else
-    PRODUCT_COPY_FILES += \
-        device/google/raviole/location/gps_user.xml.oriole:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
-endif
+PRODUCT_COPY_FILES += \
+    device/google/raviole/location/gps_user.6.1.xml.oriole:$(TARGET_COPY_OUT_VENDOR)/etc/gnss/gps.xml
 
 # Enable DeviceAsWebcam support
 PRODUCT_VENDOR_PROPERTIES += \

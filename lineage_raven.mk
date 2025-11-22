@@ -26,8 +26,8 @@ TARGET_SCREEN_HEIGHT := 3120
 TARGET_SCREEN_WIDTH := 1440
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="raven-user 16 BP2A.250605.031.A5 13701493 release-keys" \
-    BuildFingerprint=google/raven/raven:16/BP2A.250605.031.A5/13701493:user/release-keys \
+    BuildDesc="raven-user 16 BP3A.250905.014 13873947 release-keys" \
+    BuildFingerprint=google/raven/raven:16/BP3A.250905.014/13873947:user/release-keys \
     DeviceProduct=$(DEVICE_CODENAME)
 
 $(call inherit-product, $(VENDOR_PATH)/$(DEVICE_CODENAME)-vendor.mk)

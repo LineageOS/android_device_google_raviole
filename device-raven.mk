@@ -14,15 +14,7 @@
 # limitations under the License.
 #
 
-ifdef RELEASE_GOOGLE_RAVEN_RADIO_DIR
-RELEASE_GOOGLE_PRODUCT_RADIO_DIR := $(RELEASE_GOOGLE_RAVEN_RADIO_DIR)
-endif
-RELEASE_GOOGLE_BOOTLOADER_RAVEN_DIR ?= pdk# Keep this for pdk TODO: b/327119000
-RELEASE_GOOGLE_PRODUCT_BOOTLOADER_DIR := bootloader/$(RELEASE_GOOGLE_BOOTLOADER_RAVEN_DIR)
-$(call soong_config_set,raviole_bootloader,prebuilt_dir,$(RELEASE_GOOGLE_BOOTLOADER_RAVEN_DIR))
-
-
-TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_RAVEN_VERSION)
+TARGET_LINUX_KERNEL_VERSION := 6.1
 TARGET_KERNEL_DEVICE := raviole
 TARGET_KERNEL_DIR := device/google/$(TARGET_KERNEL_DEVICE)-kernels/$(TARGET_LINUX_KERNEL_VERSION)
 TARGET_KERNEL_PLATFORM_SOURCE := google/gs-$(TARGET_LINUX_KERNEL_VERSION)
@@ -115,7 +107,6 @@ PRODUCT_COPY_FILES += \
 	device/google/raviole/nfc/libnfc-nci-raven.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
 
 PRODUCT_PACKAGES += \
-	$(RELEASE_PACKAGE_NFC_STACK) \
 	Tag \
 	android.hardware.nfc-service.st \
 	NfcOverlayRaven
@@ -162,34 +153,12 @@ PRODUCT_SOONG_NAMESPACES += \
     device/google/raviole
 
 # Increment the SVN for any official public releases
-ifdef RELEASE_SVN_RAVEN
-TARGET_SVN ?= $(RELEASE_SVN_RAVEN)
-else
-# Set this for older releases that don't use build flag
-TARGET_SVN ?= 86
-endif
-
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=$(TARGET_SVN)
+    ro.vendor.build.svn=06
 
 # Set device family property for SMR
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.device_family=O6R4B9
-
-# Set build properties for SMR builds
-ifeq ($(RELEASE_IS_SMR), true)
-    ifneq (,$(RELEASE_BASE_OS_RAVEN))
-        PRODUCT_BASE_OS := $(RELEASE_BASE_OS_RAVEN)
-    endif
-endif
-
-# Set build properties for EMR builds
-ifeq ($(RELEASE_IS_EMR), true)
-    ifneq (,$(RELEASE_BASE_OS_RAVEN))
-        PRODUCT_PROPERTY_OVERRIDES += \
-        ro.build.version.emergency_base_os=$(RELEASE_BASE_OS_RAVEN)
-    endif
-endif
 
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \

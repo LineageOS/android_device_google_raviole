@@ -1,5 +1,7 @@
 #
 # SPDX-FileCopyrightText: 2020 The Android Open-Source Project
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-FileCopyrightText: The Calyx Institute
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -9,6 +11,8 @@ TARGET_KERNEL_DIR := device/google/$(TARGET_KERNEL_DEVICE)-kernels/$(TARGET_LINU
 TARGET_KERNEL_PLATFORM_SOURCE := google/gs-$(TARGET_LINUX_KERNEL_VERSION)
 
 DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay
+DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += device/google/raviole/overlay-lineage
 
 include device/google/gs101/device-shipping-common.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
@@ -189,3 +193,43 @@ PRODUCT_AVF_REMOTE_ATTESTATION_DISABLED := true
 # Raven: 0x4107
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device_id.product_id=16647
+
+# ANGLE - Almost Native Graphics Layer Engine
+PRODUCT_PACKAGES += \
+    ANGLE \
+    libEGL_angle \
+    libGLESv1_CM_angle \
+    libGLESv2_angle
+
+# Dumpstate
+PRODUCT_PACKAGES += \
+    dump_gsc.sh
+
+# EUICC
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
+
+# Fingerprint
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.sensors-V2-ndk.vendor:64
+
+# Init
+PRODUCT_PACKAGES += \
+    init.recovery.raven.touch.rc
+
+# PowerShare
+include hardware/google/pixel/powershare/device.mk
+
+# Properties
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/vendor.prop
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.dynamic_sensor_hal
+
+# Wireless charging
+include device/google/gs-common/wireless_charger/wireless_charger.mk

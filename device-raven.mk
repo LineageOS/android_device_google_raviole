@@ -15,8 +15,18 @@ DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay-lineage
 DEVICE_PACKAGE_OVERLAYS += device/google/raviole/overlay-lineage
 
 include device/google/gs101/device-shipping-common.mk
-include device/google/gs-common/bcmbt/bluetooth.mk
-include device/google/gs-common/touch/lsi/lsi.mk
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.prebuilt.xml \
+    android.hardware.bluetooth_le.prebuilt.xml
+
+DEVICE_MANIFEST_FILE += device/google/gs-common/bcmbt/manifest_bluetooth.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/bcmbt/compatibility_matrix.xml
+
+# Touch
+PRODUCT_PACKAGES += \
+    dump_lsi.sh
 
 # UWB
 PRODUCT_COPY_FILES += \
@@ -54,7 +64,7 @@ PRODUCT_PACKAGES += \
 	NfcOverlayRaven
 
 # Shared Modem Platform
-include device/google/gs-common/modem/modem_svc_sit/shared_modem_platform.mk
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/modem/modem_svc_sit/compatibility_matrix.xml
 
 # SecureElement
 PRODUCT_PACKAGES += \
@@ -229,4 +239,4 @@ PRODUCT_PACKAGES += \
     sensors.dynamic_sensor_hal
 
 # Wireless charging
-include device/google/gs-common/wireless_charger/wireless_charger.mk
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/wireless_charger/compatibility_matrix.xml

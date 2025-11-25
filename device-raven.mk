@@ -60,7 +60,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml
 
 PRODUCT_PACKAGES += \
-	Tag \
 	android.hardware.nfc-service.st \
 	NfcOverlayRaven
 
@@ -151,10 +150,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.camera.exif_reveal_make_model=true
 
-# tetheroffload HAL
-PRODUCT_PACKAGES += \
-	vendor.samsung_slsi.hardware.tetheroffload@1.1-service
-
 # Override default distortion output gain according to UX experiments
 PRODUCT_VENDOR_PROPERTIES += \
     vendor.audio.hapticgenerator.distortion.output.gain=0.32
@@ -177,9 +172,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # optimize spatializer effect
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.spatializer.effect.util_clamp_min=300
-
-PRODUCT_PACKAGES += \
-	libspatialaudio
 
 # Device features
 PRODUCT_COPY_FILES += \

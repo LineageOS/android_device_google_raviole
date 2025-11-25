@@ -1,10 +1,10 @@
 //
-// SPDX-FileCopyrightText: 2024 The LineageOS Project
+// SPDX-FileCopyrightText: The LineageOS Project
 // SPDX-License-Identifier: Apache-2.0
 //
 
 prebuilt_etc {
-    name: "init.recovery.raven.touch.rc",
+    name: "init.recovery.oriole.touch.rc",
     src: "init.recovery.touch.rc",
     sub_dir: "init",
     recovery: true,

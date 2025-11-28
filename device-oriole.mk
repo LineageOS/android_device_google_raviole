@@ -25,9 +25,6 @@ DEVICE_MANIFEST_FILE += device/google/gs-common/bcmbt/manifest_bluetooth.xml
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/bcmbt/compatibility_matrix.xml
 
 # Touch
-PRODUCT_PACKAGES += \
-    dump_stm.sh
-
 PRODUCT_VENDOR_PROPERTIES += ro.vendor.touch.dump.sys=/sys/class/spi_master/spi11/spi11.0
 PRODUCT_VENDOR_PROPERTIES += ro.vendor.touch.dump.proc=/proc/fts/driver_test
 
@@ -78,9 +75,7 @@ PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vendor.vibrator.hal.loc.coeff=2.25 \
     persist.vendor.vibrator.hal.chirp.enabled=0
 
-# PowerStats HAL
 PRODUCT_SOONG_NAMESPACES += \
-    device/google/raviole/powerstats/oriole \
     device/google/raviole
 
 # Keyboard bottom padding in dp for portrait mode
@@ -197,10 +192,6 @@ PRODUCT_PACKAGES += \
     libEGL_angle \
     libGLESv1_CM_angle \
     libGLESv2_angle
-
-# Dumpstate
-PRODUCT_PACKAGES += \
-    dump_gsc.sh
 
 # EUICC
 PRODUCT_COPY_FILES += \

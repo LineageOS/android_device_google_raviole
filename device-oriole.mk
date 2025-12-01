@@ -22,9 +22,6 @@ include device/google/gs-common/touch/stm/stm11.mk
 PRODUCT_COPY_FILES += \
 	device/google/gs101/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.oriole.rc
 
-# Bluetooth sepolicy
-include device/google/gs101/sepolicy/oriole-sepolicy.mk
-
 # Bluetooth
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.a2dp_aac.vbr_supported=true \

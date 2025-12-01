@@ -22,7 +22,7 @@ TARGET_SCREEN_DENSITY := 560
 BOARD_KERNEL_CMDLINE += disable_dma32=on
 
 include device/google/gs101/BoardConfig-common.mk
-include device/google/gs101/sepolicy/raven-sepolicy.mk
+include device/google/raviole/sepolicy/raven-sepolicy.mk
 include device/google/gs101/wifi/BoardConfig-wifi.mk
 
 # Kernel modules

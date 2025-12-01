@@ -1,0 +1,6 @@
+# EuiccSupportPixel app
+
+userdebug_or_eng(`
+    allow euiccpixel_app sysfs_touch:dir search;
+')
+

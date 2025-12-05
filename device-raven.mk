@@ -25,9 +25,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.uwb.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.uwb.xml
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.support_kernel_idle_timer=true
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.enable_frame_rate_override=true
-
 # Recovery files
 PRODUCT_COPY_FILES += \
 	device/google/gs101/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.raven.rc
@@ -39,9 +36,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.a2dp_aac.vbr_supported=true \
     persist.bluetooth.firmware.selection=BCM.hcd
-
-#config of display brightness dimming
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.0.brightness.dimming.usage=1
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -72,22 +66,8 @@ PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vendor.vibrator.hal.loc.coeff=2.5 \
     persist.vendor.vibrator.hal.chirp.enabled=0
 
-# Display LBE
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.lbe.supported=1
-
-# Media Performance Class 12
-PRODUCT_PROPERTY_OVERRIDES += ro.odm.build.media_performance_class=31
-
 PRODUCT_SOONG_NAMESPACES += \
     device/google/raviole
-
-# Increment the SVN for any official public releases
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=06
-
-# Set device family property for SMR
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.device_family=O6R4B9
 
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -106,20 +86,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES +=\
     persist.vendor.fingerprint.disable.fake.override=none
 
-# Fingerprint HAL
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.udfps.lhbm_controlled_in_hal_supported=true \
-    persist.vendor.udfps.als_feed_forward_supported=true \
-    persist.vendor.udfps.fps_touch_handler_supported=false
-
 # Keyboard side padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.kb_pad_port_r=11
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.kb_pad_port_l=11
-
-# DCK properties based on target
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gms.dck.eligible_wcc=3 \
-    ro.gms.dck.se_capability=1
 
 # SKU specific RROs
 PRODUCT_PACKAGES += \
@@ -131,47 +100,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true
 
-# Enable camera exif model/make reporting
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.exif_reveal_make_model=true
-
-# Override default distortion output gain according to UX experiments
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.audio.hapticgenerator.distortion.output.gain=0.32
-
 # RKPD
 PRODUCT_PRODUCT_PROPERTIES += \
     remote_provisioning.hostname=remoteprovisioning.googleapis.com \
 
-# Set zram size
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.zram.size=3g
-
 # This device is shipped with 31 (Android S)
 PRODUCT_SHIPPING_API_LEVEL := 31
-
-# declare use of spatial audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.audio.spatializer_enabled=true
-
-# optimize spatializer effect
-PRODUCT_PROPERTY_OVERRIDES += \
-    audio.spatializer.effect.util_clamp_min=300
 
 # Device features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# Display RRS default Config
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.vendor.display.primary.boot_config=1440x3120@120
-
 # Bluetooth OPUS codec
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.opus.enabled=true
-
-# Enable DeviceAsWebcam support
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.usb.uvc.enabled=true
 
 # Quick Start device-specific settings
 PRODUCT_PRODUCT_PROPERTIES += \

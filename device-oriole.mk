@@ -21,10 +21,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.prebuilt.xml \
     android.hardware.bluetooth_le.prebuilt.xml
 
-# Touch
-PRODUCT_VENDOR_PROPERTIES += ro.vendor.touch.dump.sys=/sys/class/spi_master/spi11/spi11.0
-PRODUCT_VENDOR_PROPERTIES += ro.vendor.touch.dump.proc=/proc/fts/driver_test
-
 # Recovery files
 PRODUCT_COPY_FILES += \
 	device/google/gs101/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.oriole.rc
@@ -33,9 +29,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.a2dp_aac.vbr_supported=true \
     persist.bluetooth.firmware.selection=BCM.hcd
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.camera.fixed_fps_range_boost=1
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -72,21 +65,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Keyboard bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.kb_pad_port_b=10
 
-# Display
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.lbe.supported=1
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_idle_timer_ms=1500
-
-# Media Performance Class 12
-PRODUCT_PROPERTY_OVERRIDES += ro.odm.build.media_performance_class=31
-
-# Increment the SVN for any official public releases
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=06
-
-# Set device family property for SMR builds
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.device_family=O6R4B9
-
 # Set support hide display cutout feature
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_hide_display_cutout=true
@@ -110,47 +88,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES +=\
     persist.vendor.fingerprint.disable.fake.override=none
 
-# Fingerprint HAL
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.udfps.lhbm_controlled_in_hal_supported=true \
-    persist.vendor.udfps.als_feed_forward_supported=true \
-    persist.vendor.udfps.fps_touch_handler_supported=false
-
-# DCK properties based on target
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gms.dck.eligible_wcc=2 \
-    ro.gms.dck.se_capability=1
-
 # Set support one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true
-
-# Enable camera exif model/make reporting
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.exif_reveal_make_model=true
-
-# Override default distortion output gain according to UX experiments
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.audio.hapticgenerator.distortion.output.gain=0.32
 
 # RKPD
 PRODUCT_PRODUCT_PROPERTIES += \
     remote_provisioning.hostname=remoteprovisioning.googleapis.com \
 
-# Set zram size
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.zram.size=3g
-
 # This device is shipped with 31 (Android S)
 PRODUCT_SHIPPING_API_LEVEL := 31
-
-# declare use of spatial audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.audio.spatializer_enabled=true
-
-# optimize spatializer effect
-PRODUCT_PROPERTY_OVERRIDES += \
-    audio.spatializer.effect.util_clamp_min=300
 
 # Device features
 PRODUCT_COPY_FILES += \
@@ -159,10 +106,6 @@ PRODUCT_COPY_FILES += \
 # Bluetooth OPUS codec
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.opus.enabled=true
-
-# Enable DeviceAsWebcam support
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.usb.uvc.enabled=true
 
 # Quick Start device-specific settings
 PRODUCT_PRODUCT_PROPERTIES += \

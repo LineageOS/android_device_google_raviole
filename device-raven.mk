@@ -59,13 +59,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
 	frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
 
-# Vibrator HAL
-PRODUCT_PRODUCT_PROPERTIES +=\
-    ro.vendor.vibrator.hal.long.frequency.shift=15 \
-    ro.vendor.vibrator.hal.device.mass=0.21 \
-    ro.vendor.vibrator.hal.loc.coeff=2.5 \
-    persist.vendor.vibrator.hal.chirp.enabled=0
-
 PRODUCT_SOONG_NAMESPACES += \
     device/google/raviole
 

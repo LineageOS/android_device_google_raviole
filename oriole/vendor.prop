@@ -47,6 +47,10 @@ ro.vendor.touch.dump.sys=/sys/class/spi_master/spi11/spi11.0
 ro.usb.uvc.enabled=true
 
 # Vibrator
+persist.vendor.vibrator.hal.chirp.enabled=0
+ro.vendor.vibrator.hal.device.mass=0.205
+ro.vendor.vibrator.hal.loc.coeff=2.25
+ro.vendor.vibrator.hal.long.frequency.shift=15
 vendor.audio.hapticgenerator.distortion.output.gain=0.32
 
 # ZRAM

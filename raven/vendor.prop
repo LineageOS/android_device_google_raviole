@@ -48,6 +48,10 @@ ro.usb.uvc.enabled=true
 ro.vendor.uwb.calibration.calibrationpaths=/vendor/etc/uwb/calib_paths
 
 # Vibrator
+persist.vendor.vibrator.hal.chirp.enabled=0
+ro.vendor.vibrator.hal.device.mass=0.21
+ro.vendor.vibrator.hal.loc.coeff=2.5
+ro.vendor.vibrator.hal.long.frequency.shift=15
 vendor.audio.hapticgenerator.distortion.output.gain=0.32
 
 # ZRAM

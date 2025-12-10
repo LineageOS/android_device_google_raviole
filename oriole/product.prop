@@ -11,7 +11,6 @@ ro.support_hide_display_cutout=true
 persist.vendor.fingerprint.disable.fake.override=none
 
 # Google keyboard
-ro.com.google.ime.height_ratio=1.05
 ro.com.google.ime.kb_pad_port_b=10
 
 # Quick start

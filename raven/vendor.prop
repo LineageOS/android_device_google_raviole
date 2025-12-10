@@ -39,7 +39,7 @@ ro.vendor.config.build_carrier=europen
 vendor.rild.libpath=libsitril.so
 
 # SVN
-ro.vendor.build.svn=06
+ro.vendor.build.svn=07
 
 # USB
 ro.usb.uvc.enabled=true

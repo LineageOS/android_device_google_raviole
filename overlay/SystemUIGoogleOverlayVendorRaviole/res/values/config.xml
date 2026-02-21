@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Doze: only register sensors that use prox when device is in certain Display states. This
+     delays registering sensors when device first shows dozing UI but the
+     Display & Power state hasn't changed to low-power mode yet. -->
+    <bool name="doze_selectively_register_prox">true</bool>
+
+    <!-- Override value to use for proximity sensor.  -->
+    <string name="proximity_sensor_type">android.sensor.light</string>
+
+    <!-- If using proximity_sensor_type, specifies a threshold value to distinguish near and
+         far break points. A sensor value less than this is considered "near". -->
+    <item name="proximity_sensor_threshold" format="float" type="dimen">12.0</item>
+
+    <!-- If using proximity_sensor_type, specifies a threshold value to distinguish near and
+         far break points. A sensor value more than this is considered "far". If not set,
+         proximity_sensor_threshold is used. This allows one to implement a latching mechanism for
+         noisy sensors. -->
+    <item name="proximity_sensor_threshold_latch" format="float" type="dimen">24.0</item>
+
+    <!-- Override value to use for proximity sensor as confirmation for proximity_sensor_type. -->
+    <string name="proximity_sensor_secondary_type">android.sensor.proximity</string>
+
+    <!-- If using proximity_sensor_secondary_type, specifies a threshold value to distinguish
+         near and far break points. A sensor value less than this is considered "near". -->
+    <item name="proximity_sensor_secondary_threshold" format="float" type="dimen">5.0</item>
+
+    <!-- Doze: Table that translates sensor values from the doze_brightness_sensor_type sensor
+               to brightness values in the integer scale [1, 255]; -1 means keeping the current
+               brightness. -->
+    <integer-array name="config_doze_brightness_sensor_to_brightness">
+        <item>-1</item>
+        <item>5</item>
+        <item>5</item>
+        <item>16</item>
+        <item>16</item>
+    </integer-array>
+</resources>

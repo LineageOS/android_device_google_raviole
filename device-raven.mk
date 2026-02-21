@@ -10,10 +10,6 @@ TARGET_KERNEL_DEVICE := raviole
 TARGET_KERNEL_DIR := device/google/$(TARGET_KERNEL_DEVICE)-kernels/$(TARGET_LINUX_KERNEL_VERSION)
 TARGET_KERNEL_PLATFORM_SOURCE := google/gs-$(TARGET_LINUX_KERNEL_VERSION)
 
-DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay
-DEVICE_PACKAGE_OVERLAYS += device/google/raviole/raven/overlay-lineage
-DEVICE_PACKAGE_OVERLAYS += device/google/raviole/overlay-lineage
-
 include device/google/gs101/device-shipping-common.mk
 
 # Bluetooth
@@ -29,9 +25,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/google/gs101/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.raven.rc
 
-PRODUCT_PACKAGES += \
-      UwbOverlayR4
-
 # NFC
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
@@ -42,8 +35,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml
 
 PRODUCT_PACKAGES += \
-	android.hardware.nfc-service.st \
-	NfcOverlayRaven
+	android.hardware.nfc-service.st
 
 # SecureElement
 PRODUCT_PACKAGES += \
@@ -53,21 +45,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
 	frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
-
-# Hide cutout overlays
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay \
-    AvoidAppsInCutoutOverlay
-
-# Android DeviceAsWebcam specific overlay
-PRODUCT_PACKAGES += \
-    DeviceAsWebcamRaven
-
-# SKU specific RROs
-PRODUCT_PACKAGES += \
-    SettingsOverlayGF5KQ \
-    SettingsOverlayGLU0G \
-    SettingsOverlayG8V0U
 
 # This device is shipped with 31 (Android S)
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -98,6 +75,35 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     init.recovery.raven.touch.rc
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    device/google/raviole/raven/overlay-lineage \
+    device/google/raviole/overlay-lineage
+
+PRODUCT_PACKAGES += \
+    DeviceAsWebcamRaviole \
+    FrameworkResOverlayProductRaviole \
+    FrameworkResOverlayVendorRaviole \
+    ONSOverlayVendorRaviole \
+    PixelNfcOverlayRaviole \
+    SafetyRegulatoryInfoOverlayProductRaviole \
+    SconeCbrsOverlay \
+    SystemUIGoogleOverlayVendorRaviole
+
+PRODUCT_PACKAGES += \
+    DMServiceOverlayVendorRaven \
+    FrameworkResOverlayProductRaven \
+    FrameworkResOverlayVendorRaven \
+    PixelNfcOverlayRaven \
+    PixelUwbOverlayR4 \
+    SettingsGoogleOverlayProductRaven \
+    SettingsGoogleRavenOverlay \
+    SettingsOverlayG8V0U \
+    SettingsOverlayGF5KQ \
+    SettingsOverlayGLU0G \
+    SystemUIGoogleOverlayProductRaven \
+    SystemUIGoogleOverlayVendorRaven
 
 # PowerShare
 include hardware/google/pixel/powershare/device.mk

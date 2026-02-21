@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="fingerprint_error_vendor">
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item>資料無效，請再試一次。</item>
+        <item>無法註冊手指。請再試一次。</item>
+    </string-array>
+</resources>

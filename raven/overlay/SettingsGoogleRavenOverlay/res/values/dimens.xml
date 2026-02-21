@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Fingerprint -->
+    <dimen name="udfps_lottie_translate_y">-500dp</dimen>
+
+    <!-- Face -->
+    <dimen name="face_preview_translate_y">-300.0</dimen>
+    <dimen name="face_preview_translate_x">-130.0</dimen>
+    <dimen name="face_preview_scale">1.2</dimen>
+</resources>

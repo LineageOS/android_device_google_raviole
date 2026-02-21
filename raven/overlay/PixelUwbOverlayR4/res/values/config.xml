@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Enables elevation estimation. Strongly recommended for hardware that doesn't support
+    elevation. This helps produce better predictions from pose changes, and improves the quality
+    of the AoA primer. This will override elevation readings from hardware that supports it! -->
+    <bool name="enable_primer_est_elevation">true</bool>
+</resources>

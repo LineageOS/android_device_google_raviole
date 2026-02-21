@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Array containing custom messages shown during fingerprint acquisision from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="fingerprint_acquired_vendor">
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item>Lëviz gishtin. Provo përsëri.</item>
+        <item>Gishti është i regjistruar, përdor një gisht tjetër.</item>
+        <item>Cilësi e dobët imazhi. Provo përsëri.</item>
+        <item/>
+        <item>Cilësi e dobët imazhi. Provo përsëri.</item>
+        <item/>
+        <item/>
+        <item>U zbulua njollë, pastro ekranin. Provo përsëri.</item>
+        <item>Imazhi nuk mund të lexohej. Provo përsëri.</item>
+        <item/>
+    </string-array>
+
+    <!-- Array containing custom error messages from vendor.  Vendor is expected to add and translate these strings -->
+    <string-array name="fingerprint_error_vendor">
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item>Të dhëna të pavlefshme. Provo përsëri.</item>
+        <item>Gishti nuk mund të regjistrohej. Provo përsëri.</item>
+    </string-array>
+</resources>

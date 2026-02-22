@@ -15,9 +15,6 @@ TARGET_KERNEL_PLATFORM_SOURCE := google/gs-$(TARGET_LINUX_KERNEL_VERSION)
 include device/google/gs101/device-shipping-common.mk
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    device/google/raviole/overlay-lineage
-
 PRODUCT_PACKAGES += \
     DeviceAsWebcamRaviole \
     FrameworkResOverlayProductRaviole \
@@ -43,7 +40,9 @@ PRODUCT_PACKAGES += \
     SystemUIGoogleOverlayVendorRaven
 
 PRODUCT_PACKAGES += \
-    ApertureOverlayRaven
+    ApertureOverlayRaven \
+    LineageSdkOverlayRaviole \
+    SettingsOverlayRaviole
 
 # PowerShare
 include hardware/google/pixel/powershare/device.mk

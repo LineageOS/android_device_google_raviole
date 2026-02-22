@@ -43,7 +43,9 @@ PRODUCT_PACKAGES += \
     SystemUIGoogleOverlayVendorOriole
 
 PRODUCT_PACKAGES += \
-    ApertureOverlayOriole
+    ApertureOverlayOriole \
+    LineageSdkOverlayRaviole \
+    SettingsOverlayRaviole
 
 # PowerShare
 include hardware/google/pixel/powershare/device.mk

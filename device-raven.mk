@@ -16,7 +16,6 @@ include device/google/gs101/device-shipping-common.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    device/google/raviole/raven/overlay-lineage \
     device/google/raviole/overlay-lineage
 
 PRODUCT_PACKAGES += \
@@ -42,6 +41,9 @@ PRODUCT_PACKAGES += \
     SettingsOverlayGLU0G \
     SystemUIGoogleOverlayProductRaven \
     SystemUIGoogleOverlayVendorRaven
+
+PRODUCT_PACKAGES += \
+    ApertureOverlayRaven
 
 # PowerShare
 include hardware/google/pixel/powershare/device.mk

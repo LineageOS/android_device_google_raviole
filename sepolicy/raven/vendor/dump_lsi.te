@@ -1,5 +1,7 @@
 pixel_bugreport(dump_lsi)
 
+type sysfs_touch, fs_type, sysfs_type;
+
 allow dump_lsi sysfs_touch:dir r_dir_perms;
 allow dump_lsi sysfs_touch:file rw_file_perms;
 allow dump_lsi vendor_toolbox_exec:file execute_no_trans;

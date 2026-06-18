@@ -1,5 +1,3 @@
-type hal_wireless_charger_exec, exec_type, file_type, vendor_file_type;
-
 add_service(hal_wireless_charger, hal_wireless_charger_service)
 
 binder_call(hal_wireless_charger, hal_wlcservice)

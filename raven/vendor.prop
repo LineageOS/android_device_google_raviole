@@ -12,7 +12,7 @@ ro.surface_flinger.support_kernel_idle_timer=true
 vendor.display.0.brightness.dimming.usage=1
 
 # SVN
-ro.vendor.build.svn=16
+ro.vendor.build.svn=19
 
 # UWB
 ro.vendor.uwb.calibration.calibrationpaths=/vendor/etc/uwb/calib_paths

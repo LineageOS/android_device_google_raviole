@@ -12,7 +12,7 @@ ro.gms.dck.eligible_wcc=2
 ro.surface_flinger.set_idle_timer_ms=1500
 
 # SVN
-ro.vendor.build.svn=16
+ro.vendor.build.svn=19
 
 # Touch
 ro.vendor.touch.dump.proc=/proc/fts/driver_test

@@ -69,6 +69,10 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
+# USB
+PRODUCT_PACKAGES += \
+    usb_accessory_utils
+
 # Vibrator
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib/android.hardware.vibrator-V2-ndk.so \

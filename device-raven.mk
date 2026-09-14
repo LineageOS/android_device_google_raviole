@@ -69,6 +69,10 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
+# USB
+PRODUCT_PACKAGES += \
+	usb_accessory_utils
+
 # UWB
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.uwb.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.uwb.xml

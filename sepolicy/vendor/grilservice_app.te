@@ -1,3 +1,0 @@
-type hal_audio_ext_service, hal_service_type, service_manager_type;
-
-allow grilservice_app hal_audio_ext_service:service_manager find;
